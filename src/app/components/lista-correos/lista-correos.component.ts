@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaCorreosComponent implements OnInit {
 
-  constructor() { }
+  correos: any[];
 
-  ngOnInit(): void {
+  constructor() {
+    const correo1 = {
+      titulo: "Titulo del 1",
+      cuerpo: `Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email
+        Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email,
+        Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email`,
+      emisor: 'correoEmisor1@openWebinar.inv',
+      destinatario: 'correoReceptor@openWebinar.inv'
+    };
+    const correo2 = {
+      titulo: "Titulo del 2",
+      cuerpo: `Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email
+        Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuerpo del Email, Cuer`,
+      emisor: 'correoEmisor2@openWebinar.inv',
+      destinatario: 'correoReceptor@openWebinar.inv'
+    };
+    this.correos = [];
+    this.correos.push(correo1);
+    this.correos.push(correo2);
+  }
+  ngOnInit() {
   }
 
 }
