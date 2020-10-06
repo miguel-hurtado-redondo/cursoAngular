@@ -4,7 +4,7 @@
       <th>Emisor</th>
       <th>Titulo</th>
   </tr>
-  <tr *ngFor="let correo of correos index as i;">
+  <tr *ngFor="let correo of correos index as i;"> <!--aqui estamos recorriendo correos por completo y la metemos en la variable correo cada iteracion y le pasamos el indice a la valriable i.-->
       <td>
         <input type="radio" name="leido-{{i}}" [(ngModel)]="correo.leido" [value]=true> Si
         <input type="radio" name="leido-{{i}}" [(ngModel)]="correo.leido" [value]=false> No
@@ -13,3 +13,7 @@
       <td>{{correo.titulo}}</td>
   </tr>
 </table>
+
+<h2>Estado de lectura del correo 1:</h2>
+<h3 *ngIf="correos[0].leido">Si</h3>  <!--Aqui le estamos diciendo que si es leido es true muestre si-->
+<h3 *ngIf="!correos[0].leido">No</h3> <!--Aqui le estamos diciendo que si es leido es false muestre no.-->
