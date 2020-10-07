@@ -9,6 +9,7 @@ export class ListaCorreosComponent implements OnInit {
 
   correos: any[];
   responder: boolean;
+  correoAResponder:any;
 
   constructor() {
     const correo1 = {
@@ -49,12 +50,15 @@ export class ListaCorreosComponent implements OnInit {
       leido: false,
     });
 
+    this.responder = false;
   }
+
   ngOnInit() {
   }
 
-  clickResponder() {
+  clickResponder(correo) {
     this.responder = !this.responder;
+    this.correoAResponder = correo;
   }
 
 }
