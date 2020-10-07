@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ export class NuevoCorreoComponent implements OnInit {
 
   nuevoCorreo: FormGroup;
   submitted = false; //cuando se pulse el envio se pondrá a true y saldran errores si los hay
+  @Input() correo: any;
 
   constructor(private formBuilder: FormBuilder) { }
 
