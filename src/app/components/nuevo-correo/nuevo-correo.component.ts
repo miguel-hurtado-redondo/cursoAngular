@@ -20,6 +20,14 @@ export class NuevoCorreoComponent implements OnInit {
           cuerpo: ['', [Validators.required, Validators.minLength(10)]],
           destinatario: ['', [Validators.required, Validators.email]],//validator.email, ya sabe que tiene que validar el email(automaticamente).
         });
+
+        if (this.correo != undefined) {
+          console.log("A", this.correo);
+          this.nuevoCorreo.patchValue({
+            titulo: 'RE: '+this.correo.titulo,
+            destinatario: this.correo.emisor
+          });
+        }
     }
 
     get formulario() { return this.nuevoCorreo.controls; }
