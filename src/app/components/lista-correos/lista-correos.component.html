@@ -19,7 +19,7 @@
 
     </tr>
     <tr *ngIf="correo.responder">
-      <app-nuevo-correo [correo]="correo" (accionRealizada)="accionRespuestaRapida($event)"></app-nuevo-correo>
+      <app-nuevo-correo [correo]="correo" (accionRealizada)="accionRespuestaRapida(correo)"></app-nuevo-correo><!--como la variable correo esta creada dentro del contenedor ng-container, esta variable esta activa, asi que lo que hacemos es que cada vez que se ejecute la funcion, le estamos pasando el correo en el que estamos en ese momento-->
     </tr>
   </ng-container>
 </table>
