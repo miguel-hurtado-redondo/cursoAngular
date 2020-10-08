@@ -45,7 +45,7 @@ export class NuevoCorreoComponent implements OnInit {
         correo.emisor= 'correoEmisor1@openWebinar.inv';
 
         this.onReset();
-        this.servicioAvisos.showMenssage('Correo enviado a ${correo.emisor}');
+        this.servicioAvisos.showMenssage(`Correo enviado a ${correo.emisor}`);
     }
 
     onReset() { //nos pone el boton como false otra vez y reseteamos el formulario.
