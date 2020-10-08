@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//tanto para las escuchas como las eventos hay que ponerlos siempre en el import
+import { AvisosService } from 'src/app/Services/avisos.service';  //tanto para las escuchas como las eventos hay que ponerlos siempre en el import
 @Component({
   selector: 'app-nuevo-correo',
   templateUrl: './nuevo-correo.component.html',
@@ -13,7 +13,7 @@ export class NuevoCorreoComponent implements OnInit {
   @Input() correo: any; //aqui estamos recibiendo del padre
   @Output() accionRealizada: EventEmitter<any> = new EventEmitter();// creamos el evento que vamos a emitir llamado 'accionRealizada' (este es el hijo)(el any es generico, cuando no sabemos que tipo es, si es string... )
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private servicioAvisos: AvisosService) { }
 
     ngOnInit() {
         this.nuevoCorreo = this.formBuilder.group({
@@ -23,8 +23,7 @@ export class NuevoCorreoComponent implements OnInit {
         });
 
         if (this.correo != undefined) {
-          console.log("A", this.correo);
-          this.nuevoCorreo.patchValue({
+            this.nuevoCorreo.patchValue({
             titulo: 'RE: '+this.correo.titulo,
             destinatario: this.correo.emisor
           });
@@ -45,8 +44,8 @@ export class NuevoCorreoComponent implements OnInit {
         correo.leido= false;
         correo.emisor= 'correoEmisor1@openWebinar.inv';
 
-        alert("Correo Enviado \nEliminamos el formulario");
         this.onReset();
+        this.servicioAvisos.showMenssage("Correo Enviado");
     }
 
     onReset() { //nos pone el boton como false otra vez y reseteamos el formulario.
