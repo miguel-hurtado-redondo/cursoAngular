@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+//tanto para las escuchas como las eventos hay que ponerlos siempre en el import
 @Component({
   selector: 'app-nuevo-correo',
   templateUrl: './nuevo-correo.component.html',
@@ -10,7 +10,8 @@ export class NuevoCorreoComponent implements OnInit {
 
   nuevoCorreo: FormGroup;
   submitted = false; //cuando se pulse el envio se pondrá a true y saldran errores si los hay
-  @Input() correo: any;
+  @Input() correo: any; //aqui estamos recibiendo del padre
+  @Output() accionRealizada: EventEmitter<any> = new EventEmitter();// creamos el evento que vamos a emitir llamado 'accionRealizada' (este es el hijo)(el any es generico, cuando no sabemos que tipo es, si es string... )
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -51,6 +52,7 @@ export class NuevoCorreoComponent implements OnInit {
     onReset() { //nos pone el boton como false otra vez y reseteamos el formulario.
         this.submitted = false;
         this.nuevoCorreo.reset();
+        this.accionRealizada.emit();// esto lo ponemos para cuando se envie o cancele la respuesta rapida, se quite el formulario de envio. No hace falta ponerlo en el onSubmit porque este tabien llama al onReset cuando termina.
     }
 
 }

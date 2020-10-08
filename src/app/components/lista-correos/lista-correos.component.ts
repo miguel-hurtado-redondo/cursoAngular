@@ -57,9 +57,10 @@ export class ListaCorreosComponent implements OnInit {
   }
 
   clickResponder(correo) {
-    //this.responder = !this.responder;
-    //this.correoAResponder = correo;
-    correo.responder = !correo.responder;
+     correo.responder = !correo.responder;
+  }
+  accionRespuestaRapida(){ //creamos esta funcion para respuesta rapida que es llamada desde el html del padre "lista-correo...."
+    console.log("Respuesta Recibida");
   }
 
 }
