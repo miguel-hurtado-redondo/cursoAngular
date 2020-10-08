@@ -45,13 +45,18 @@ export class NuevoCorreoComponent implements OnInit {
         correo.emisor= 'correoEmisor1@openWebinar.inv';
 
         this.onReset();
-        this.servicioAvisos.showMenssage("Correo Enviado");
+        this.servicioAvisos.showMenssage('Correo enviado a ${correo.emisor}');
     }
 
     onReset() { //nos pone el boton como false otra vez y reseteamos el formulario.
         this.submitted = false;
         this.nuevoCorreo.reset();
         this.accionRealizada.emit();// esto lo ponemos para cuando se envie o cancele la respuesta rapida, se quite el formulario de envio. No hace falta ponerlo en el onSubmit porque este tabien llama al onReset cuando termina.
+    }
+
+    cancel(){
+      this.onReset();
+      this.servicioAvisos.showMenssage("Envio Cancelado");
     }
 
 }
