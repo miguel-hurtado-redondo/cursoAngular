@@ -8,7 +8,7 @@ import { AvisosService } from 'src/app/Services/avisos.service';
 })
 export class AvisosComponent implements OnInit {
 
-  constructor(private servicioAvisos: AvisosService) {}
+  constructor(public servicioAvisos: AvisosService) {}
 
   ngOnInit() {}
 }
