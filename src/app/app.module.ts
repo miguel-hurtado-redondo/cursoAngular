@@ -10,6 +10,26 @@ import { NuevoCorreoComponent } from './components/nuevo-correo/nuevo-correo.com
 import { AvisosComponent } from './components/avisos/avisos.component';
 import { CorreosRecibidosComponent } from './Views/correos-recibidos/correos-recibidos.component';
 import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import {
+  GoogleApiModule,
+  NgGapiClientConfig,
+  NG_GAPI_CONFIG,
+} from "ng-gapi";
+
+let gapiClientConfig: NgGapiClientConfig = {
+  client_id: "93928816654-h3tl4ghfrar50a4g3fkhdothj2p4e8nu.apps.googleusercontent.com",
+  discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
+  ux_mode: "popup",
+  redirect_uri: "http://localhost:4200/loged",
+  scope: [
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/gmail.labels",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.readonly"
+  ].join(" ")
+};
 
 @NgModule({
   declarations: [
@@ -25,7 +45,12 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    GoogleApiModule.forRoot({
+      provide: NG_GAPI_CONFIG,
+      useValue: gapiClientConfig
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
