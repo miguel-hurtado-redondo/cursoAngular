@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//tanto para las escuchas como las eventos hay que ponerlos siempre en el import
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; //tanto para las escuchas como las eventos hay que ponerlos siempre en el import
+
+
 @Component({
   selector: 'app-nuevo-correo',
   templateUrl: './nuevo-correo.component.html',
@@ -23,7 +24,6 @@ export class NuevoCorreoComponent implements OnInit {
         });
 
         if (this.correo != undefined) {
-          console.log("A", this.correo);
           this.nuevoCorreo.patchValue({
             titulo: 'RE: '+this.correo.titulo,
             destinatario: this.correo.emisor
@@ -39,7 +39,6 @@ export class NuevoCorreoComponent implements OnInit {
         if (this.nuevoCorreo.invalid) { //si el correo es invalido, return y no sigue el codigo
             return;
         }
-
         //si no hay errores enviamos la informacion a un alert y despues ejecutamos onReset
         let correo = this.nuevoCorreo.value;
         correo.leido= false;
@@ -52,7 +51,7 @@ export class NuevoCorreoComponent implements OnInit {
     onReset() { //nos pone el boton como false otra vez y reseteamos el formulario.
         this.submitted = false;
         this.nuevoCorreo.reset();
-        this.accionRealizada.emit();// esto lo ponemos para cuando se envie o cancele la respuesta rapida, se quite el formulario de envio. No hace falta ponerlo en el onSubmit porque este tabien llama al onReset cuando termina.
+        this.accionRealizada.emit(); // esto lo ponemos para cuando se envie o cancele la respuesta rapida, se quite el formulario de envio. No hace falta ponerlo en el onSubmit porque este tabien llama al onReset cuando termina.
     }
 
 }
