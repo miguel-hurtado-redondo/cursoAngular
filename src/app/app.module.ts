@@ -15,6 +15,7 @@ import {
   GoogleApiModule,
   NgGapiClientConfig,
   NG_GAPI_CONFIG,
+  GoogleAuthService,
 } from "ng-gapi";
 
 let gapiClientConfig: NgGapiClientConfig = {
